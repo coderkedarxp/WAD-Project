@@ -1,0 +1,85 @@
+html{
+    box-sizing: border-box;
+    /* font-size: 62.5%; */
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    font-family: inherit;
+    box-sizing: inherit;
+}
+
+.intro{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 1;
+    background-color: #061932;
+    transition: 1s;
+}
+
+.intro img{
+    top: 60px;
+    position: absolute;
+}
+
+.intro p{
+    color: white;
+    font-size: 1.3rem;
+    margin-top: 10px;
+    overflow: hidden;
+    
+}
+
+.logo{
+    font-size: 2.0rem;
+    color: white;
+}
+
+.logo-parts{
+    position: relative;
+    display: inline-block;
+    bottom: -20px;
+    opacity: 0;
+    margin-top: 230px;
+}
+
+.logo-parts.active {
+    bottom: 0;
+    opacity: 1;
+    transition: ease-in-out 0.5s;
+}
+
+.logo-parts.fade{
+    bottom: 350px;
+    opacity: 0;
+    transition: ease-in-out 0.5s;
+}
+
+.navbar{
+    width: 100%;
+    padding: 25px;
+}
+
+#carouselExampleIndicators {
+    max-width: 80%; /* Set a maximum width for the carousel */
+    margin: 0 auto; /* Center the carousel horizontally */
+    margin-top: 30px;
+}
+
+.carousel-inner img {
+    max-height: 80vh; /* Set a maximum height for the carousel images */
+    width: auto; /* Allow the width to adjust proportionally */
+    margin: 0 auto; /* Center the images horizontally */
+    max-width: 100%; /* Ensure images don't exceed carousel width */
+}
