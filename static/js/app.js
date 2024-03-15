@@ -25,6 +25,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 intro.style.top = '-100vh'; // Slide up the window
                 animationCompleted = true; // Set the flag to true after the animation completes
             }, 2300);
+            
         });
     }
 });
