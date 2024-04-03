@@ -19,4 +19,6 @@ ScrollReveal().reveal(".header__container .btn", {
     delay: 1000,
 });
 
-
+document.querySelector(".discover__btn").addEventListener("click", function() {
+    window.location.href = "restaurants.html"; // Replace "new-page.html" with the URL of the page you want to redirect to
+});

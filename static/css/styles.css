@@ -127,52 +127,7 @@ hr{
     background-repeat: no-repeat;
   }
 
-  nav {
-    background-color: var(--primary-color);
-    border-bottom: 1px solid var(--extra-light);
-  }
-
-  .nav__bar {
-    max-width: var(--max-width);
-    margin: auto;
-    padding: 1.5rem 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-  }
-
-  .nav__logo a {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--white);
-  }
-
-  .nav__links {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-  }
-
-  .link a {
-    padding: 1rem 5px;
-    font-weight: 500;
-    color: var(--white);
-    text-decoration: none;
-    transition: 0.3s;
-  }
-
-  .link a:hover {
-    color: var(--secondary-color);
-    border-bottom: 1px solid var(--secondary-color);
-  }
-
-  .link span {
-    padding: 1rem 0;
-    color: var(--white);
-    cursor: pointer;
-  }
+ 
 
   .header__container {
     padding: 12rem 1rem;
@@ -241,7 +196,7 @@ hr{
     object-fit: cover; /* Scale the image to be as small as possible while ensuring its aspect ratio is maintained */
   }
   
-  
+
   .discover__image::after {
     position: absolute;
     content: "";
@@ -348,3 +303,26 @@ hr{
     border: #f56b27;
     color: white;
   }
+
+.rests .heading h2{
+  margin-top: 13px;
+  font-size: x-large;
+  color: var(--white-color);
+}
+
+.card {
+  margin-top: 24px;
+  width: 100%; /* Fixed width for the cards */
+  height: 32rem; /* Fixed height for the cards */
+}
+
+.card-body {
+  height: calc(100% - 3.5rem); /* Adjusted height for the card body */
+  overflow: hidden; /* Hide overflow content */
+}
+
+.card-img-top {
+  height: 70%; /* Adjusted height for the card image */
+  object-fit: cover; /* Ensure the image covers the entire space */
+}
+
