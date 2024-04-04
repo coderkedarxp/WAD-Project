@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../static/css/styles.css">
     <link rel="stylesheet" href="/static/css/navbar.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link
     href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
     rel="stylesheet"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/scrollreveal"></script>
@@ -20,7 +21,7 @@
 </head>
 <body>
     <div class="intro">
-        <img src="../static/images/LogoP-wbg.png" alt="PuneCompass Logo">
+       <div class="image-wrapper"></div> <img src="../static/images/LogoP-wbg.png" alt="PuneCompass Logo">
         <h1 class="logo">
             <span class="logo-parts">P</span>
             <span class="logo-parts">U</span>
@@ -46,10 +47,10 @@
               <li class="link"><a href="#about">About Us</a></li>
               <li class="link"><a href="#discover">Discover</a></li>
               <li class="link"><a href="#journals">Journals</a></li>
-              <li class="link"><a href="#gallery">Gallery</a></li>
               <li class="link"><a href="#contact">Contact</a></li>
+              <li class="link"><a href="/templates/login.html">Login</a></li>
               <li class="link search">
-                <span><i class="ri-search-line"></i></span>
+                <span><i class="fa-solid fa-magnifying-glass"></i></span>
               </li>
             </ul>
           </div>
@@ -73,7 +74,7 @@
     <div class="discover__grid">
       <div class="discover__card" data-aos="fade-up">
         <div class="discover__image">
-          <img src="/static/images/misalpavdiscoversmall.jpg" alt="discover" />
+         <div class="image-wrapper"></div> <img src="/static/images/misalpavdiscoversmall.jpg" alt="discover" />
         </div>
         <div class="discover__card__content" data-aos="fade-up">
           <h4>FOOD</h4>
@@ -81,13 +82,13 @@
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum quae beatae adipisci eos reiciendis, dignissimos enim atque. Similique, modi delectus voluptate.
           </p>
           <button class="discover__btn">
-            Discover More <i class="ri-arrow-right-line"></i>
+            Discover More <i class="fa-solid fa-arrow-right"></i>
           </button>
         </div>
       </div>
       <div class="discover__card"data-aos="fade-up">
         <div class="discover__image">
-          <img src="/static/images/ganapatidiscover.jpg" alt="discover" />
+         <div class="image-wrapper"></div> <img src="/static/images/ganapatidiscover.jpg" alt="discover" />
         </div>
         <div class="discover__card__content"data-aos="fade-up">
           <h4>CULTURE</h4>
@@ -95,13 +96,13 @@
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum quae beatae adipisci eos reiciendis, dignissimos enim atque. Similique, modi delectus voluptate.
           </p>
           <button class="discover__btn">
-            Discover More <i class="ri-arrow-right-line"></i>
+            Discover More <i class="fa-solid fa-arrow-right"></i></i>
           </button>
         </div>
       </div>
       <div class="discover__card"data-aos="fade-up">
         <div class="discover__image">
-          <img src="/static/images/naturediscover.jpg" alt="discover" />
+         <div class="image-wrapper"></div> <img src="/static/images/naturediscover.jpg" alt="discover" />
         </div>
         <div class="discover__card__content"data-aos="fade-up">
           <h4>NATURE</h4>
@@ -109,7 +110,7 @@
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum quae beatae adipisci eos reiciendis, dignissimos enim atque. Similique, modi delectus voluptate.
           </p>
           <button class="discover__btn">
-            Discover More <i class="ri-arrow-right-line"></i>
+            Discover More <i class="fa-solid fa-arrow-right"></i></i>
           </button>
         </div>
       </div>
@@ -117,7 +118,6 @@
   </div>
 </section>
 <hr>
-
 <section class="journals" id="journals"data-aos="fade-up">
   <div class="section__container journals__container">
     <h2 class="section__header">The travel journals</h2>
@@ -127,7 +127,7 @@
     </p>
     <div class="journals__grid">
       <div class="journals__card"data-aos="fade-up">
-        <img src="/static/images/traveljournal1.jpg" alt="journal" />
+       <img src="/static/images/traveljournal1.jpg" alt="journal" />
         <div class="journals__content">
           <div class="journals__author">
             
@@ -138,7 +138,7 @@
             <p>18 Apr 2022</p>
             <span>
               <a href="#"><i class="ri-share-fill"></i></a>
-            </span>
+            </span> 
           </div>
         </div>
       </div>
@@ -159,7 +159,7 @@
         </div>
       </div>
       <div class="journals__card"data-aos="fade-up">
-        <img src="/static/images/traveljournal3.jpg" alt="journal" />
+       <img src="/static/images/traveljournal3.jpg" alt="journal" />
         <div class="journals__content">
           <div class="journals__author">
            
@@ -175,7 +175,7 @@
         </div>
       </div>
       <div class="journals__card"data-aos="fade-up">
-        <img src="/static/images/traveljournal4.jpg" alt="journal" />
+       <img src="/static/images/traveljournal4.jpg" alt="journal" />
         <div class="journals__content">
           <div class="journals__author">
             
@@ -207,7 +207,7 @@
         </div>
       </div>
       <div class="journals__card"data-aos="fade-up">
-        <img src="/static/images/traveljournal6.jpg" alt="journal" />
+       <img src="/static/images/traveljournal6.jpg" alt="journal" />
         <div class="journals__content">
           <div class="journals__author">
             
@@ -230,7 +230,98 @@
     </div>
   </div>
 </section>
-
+<hr>
+<section class="gallery">
+  <div class="gallery__container">
+    <h2 class="section__header">Gallery</h2>
+    <p class="section__subheader">
+      See Pune From Here
+    </p>
+  </div>
+    <!--carousel start-->
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="card">
+           <div class="image-wrapper2">
+             <img src="/static/images/Punenightlife.jpg" class="card-img-top" alt="...">
+            </div>
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="card">
+           <div class="image-wrapper2">
+            <img src="/static/images/Pune2.jpg" class="card-img-top" alt="...">
+          </div> 
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="card">
+           <div class="image-wrapper2"> 
+            <img src="/static/images/PuneLavasa.jpg" class="card-img-top" alt="...">
+          </div>
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="card">
+           <div class="image-wrapper2"> 
+            <img src="/static/images/PuneOffice.jpg" class="card-img-top" alt="...">
+          </div>
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="card">
+           <div class="image-wrapper2"> 
+            <img src="/static/images/pavilion.jpg" class="card-img-top" alt="...">
+          </div>
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="card">
+           <div class="image-wrapper2"><img src="/static/images/pune1.jpg" class="card-img-top" alt="...">
+           </div>
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="card">
+           <div class="image-wrapper2">
+            <img src="/static/images/Puneaesthetichome.jpg" class="card-img-top" alt="...">
+          </div> 
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <!--carousel send-->
+</section>
 
 
     

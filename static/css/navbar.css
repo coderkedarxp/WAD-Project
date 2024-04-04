@@ -74,3 +74,7 @@ nav {
     color: var(--white);
     cursor: pointer;
   }
+
+  nav .a{
+    text-decoration: none;
+  }
