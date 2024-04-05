@@ -127,52 +127,7 @@ hr{
     background-repeat: no-repeat;
   }
 
-  nav {
-    background-color: var(--primary-color);
-    border-bottom: 1px solid var(--extra-light);
-  }
-
-  .nav__bar {
-    max-width: var(--max-width);
-    margin: auto;
-    padding: 1.5rem 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-  }
-
-  .nav__logo a {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--white);
-  }
-
-  .nav__links {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-  }
-
-  .link a {
-    padding: 1rem 5px;
-    font-weight: 500;
-    color: var(--white);
-    text-decoration: none;
-    transition: 0.3s;
-  }
-
-  .link a:hover {
-    color: var(--secondary-color);
-    border-bottom: 1px solid var(--secondary-color);
-  }
-
-  .link span {
-    padding: 1rem 0;
-    color: var(--white);
-    cursor: pointer;
-  }
+ 
 
   .header__container {
     padding: 12rem 1rem;
@@ -214,14 +169,18 @@ hr{
   
   .discover__grid {
     margin-top: 4rem;
-    display: grid;
+    display: flex; /* Change from grid to flex */
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
+    align-items: stretch; /* Ensure all items have the same height */
   }
   
   .discover__card {
     max-width: 320px;
+    height: 55rem;
     margin: auto;
+    flex: 1; /* Equal width for all cards */
   }
   
   .discover__card:nth-child(2) {
@@ -241,7 +200,7 @@ hr{
     object-fit: cover; /* Scale the image to be as small as possible while ensuring its aspect ratio is maintained */
   }
   
-  
+
   .discover__image::after {
     position: absolute;
     content: "";
@@ -289,12 +248,18 @@ hr{
     margin-top: 4rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    grid-auto-rows: 1fr;
+    gap: 20px;
   }
-  
+
+  .journals__card {
+    display: flex;
+    flex-direction: column;
+}
+
   .journals__card img {
     max-width: 100%;
-    height: auto;
+    height: 50%;
   }
 
   .journals__content {
@@ -348,3 +313,168 @@ hr{
     border: #f56b27;
     color: white;
   }
+
+.rests .heading h2{
+  margin-top: 13px;
+  font-size: x-large;
+  color: var(--white-color);
+}
+
+.card {
+  margin-top: 24px;
+  width: 100%; /* Fixed width for the cards */
+  height: 32rem; /* Fixed height for the cards */
+}
+
+.card-body {
+  height: calc(100% - 3.5rem); /* Adjusted height for the card body */
+  overflow: hidden; /* Hide overflow content */
+}
+
+.card-img-top {
+  height: 70%; /* Adjusted height for the card image */
+  object-fit: cover; /* Ensure the image covers the entire space */
+}
+
+.gallery__container{
+  padding: 5rem 1rem;
+}
+
+.carousel-inner{
+  padding: 1em;
+}
+
+.card{
+  margin: 0 .5rem;
+}
+
+.image-wrapper2{
+  max-width: 100%;
+  height: 17em;
+}
+
+.image-wrapper2 img{
+  max-width: 100%;
+  max-height: 70%;
+}
+
+/* login page styling */
+section#hero{
+  margin: 1rem 0;
+}
+
+.container{
+  display: flex;
+  padding: 0 2rem;
+}
+
+.hero-wrap{
+  display: flex;
+}
+
+.quote-wrap p{
+  font-size: 1.2rem;
+  margin-top: 10rem;
+  margin-right: 2rem;
+  color: #ddd;
+}
+
+.quote-wrap em{
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: var(--white-color);
+}
+
+.login-wrap-box{
+  margin-top: 5rem;
+  width: 35rem;
+  background: #eeeff1;
+  color: #27282a;
+  box-shadow: 0 0 2px 5px rgba(144, 141, 141, 0.34);
+  padding: 1.5rem;
+  border-radius: 5px;
+}
+
+.login-title h3{
+  font-size: 1.5rem;
+}
+
+.login-title p{
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+  font-size: .9rem;
+}
+
+form input{
+  width: 100%;
+  height: 2.5rem;
+  border: .3ps solid rgba(210, 208, 208, 0.340);
+  text-indent: none;
+  margin-top: 2px;
+  background: #eeeff1;
+}
+
+form p{
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+  font-size: .9rem;
+  color: #27282a;
+}
+
+form .d-flex{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: .9rem;
+}
+
+form .d-flex a{
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.btn-submit{
+  background: var(--secondary-color);
+  height: 2.5rem;
+  width: 6.5rem;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 1.3rem;
+  border: none;
+  cursor: pointer;
+}
+
+.no-register{
+  margin-top: 3rem;
+  font-weight: bold;
+  font-size: .85rem;
+}
+
+.no-register a{
+  color: var(--secondary-color);
+}
+
+.already-registered{
+  margin-top: 3rem;
+  font-weight: bold;
+  font-size: .85rem;
+}
+
+.already-registered a{
+  color: var(--secondary-color);
+}
+
+@media screen and (min-width: 576px) {
+  .carousel-inner{
+    display: flex;
+  }  
+  .carousel-item{
+    display: block;
+    margin: 10px;
+    flex: 0 0 calc(100%/3);
+  }
+  .image-wrapper2{
+    height: 23vw;
+  }
+}
