@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block body %}
+ 
+<section class="container-fluid restviews">
+    <div class="container top">
+        <div class="heading">
+            <h2>Restaurant Name</h2>
+            <hr>
+            <h3></h3>
+        </div>
+    </div>
+    <!--carousel trial-->
+    <div id="carouselExampleIndicators" class="carousel slide">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/static/images/restaurants/alto-vino-slide1.jpg" class="d-block w-100" alt="Slide 1">
+            </div>
+            <div class="carousel-item">
+                <img src="/static/images/restaurants/alto-vino-slide2.jpg" class="d-block w-100" alt="Slide 2">
+            </div>
+            <div class="carousel-item">
+                <img src="/static/images/restaurants/alto-vino-slide3.jpg" class="d-block w-100" alt="Slide 3">
+            </div>
+            <div class="carousel-item">
+                <img src="/static/images/restaurants/alto-vino-slide4.jpg" class="d-block w-100" alt="Slide 3">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>    
+    <!--carousel trial end-->
+    <hr>
+    <!--restaurant description-->
+    <section class="container-fluid restdes">
+        <h4>About</h4>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est voluptatem, sequi ullam asperiores fugiat maiores totam non neque officiis voluptate obcaecati reiciendis, voluptatum, rem suscipit provident ut eum quisquam aut.</p>
+    </section>
+    <!--description ends-->
+    <hr>
+        <br>
+        <div class="row">
+        <div class="card">
+            <h5 class="card-header">Restaurant Name</h5>
+            <div class="card-body">
+              <h5 class="card-title">User Name</h5> 
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+              <p class="card-text">User Review</p>
+              <i class="fa-regular fa-thumbs-up" style="margin-right: 13px; cursor: pointer;" id="like-review" onclick="likeOrNone()"></i>
+              <i class="fa-regular fa-thumbs-down" style="cursor: pointer;" id="unlike-review" onclick="unlikeOrNone()"></i>
+            </div>
+          </div>
+        </div>
+        <br>
+</section>
+<script src="/static/js/main.js"></script>
+{% endblock %}
+</body>
+</html>

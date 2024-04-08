@@ -250,16 +250,18 @@ hr{
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: 1fr;
     gap: 20px;
+    grid-row-gap: 5px;
   }
 
   .journals__card {
     display: flex;
     flex-direction: column;
+    margin-bottom: 10px; /* Adjust margin to reduce gap between rows */
 }
 
   .journals__card img {
     max-width: 100%;
-    height: 50%;
+    height: 43%;
   }
 
   .journals__content {
@@ -304,7 +306,8 @@ hr{
   }
   
   .journals__btn {
-    margin-top: 4rem;
+    padding-bottom: 20%;
+    /* margin-bottom: 10rem; */
     text-align: center;
   }
 
@@ -320,10 +323,10 @@ hr{
   color: var(--white-color);
 }
 
-.card {
+.rests .card {
   margin-top: 24px;
   width: 100%; /* Fixed width for the cards */
-  height: 32rem; /* Fixed height for the cards */
+  height: 33rem; /* Fixed height for the cards */ 
 }
 
 .card-body {
@@ -344,9 +347,9 @@ hr{
   padding: 1em;
 }
 
-.card{
+/* .card{
   margin: 0 .5rem;
-}
+} */
 
 .image-wrapper2{
   max-width: 100%;
@@ -465,15 +468,36 @@ form .d-flex a{
   color: var(--secondary-color);
 }
 
+.restviews .heading h2 {
+  margin-top: 2rem; /* Adjust margin top to align with the card */
+}
+
+.restviews .heading h6 {
+  margin-top: -1rem; /* Add some margin to separate from the card */
+}
+
+.restviews .row {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+}
+
+.restviews .card{
+  width: 90%;
+}
+
+
+/* restaurant review images slider */
+.restviews .carousel-item img {
+  max-width: 40%;
+  height: 300px;
+  margin: 0 auto;
+}
+ .restviews .restdes {
+  padding-left: 4rem;
+ }
+
+
 @media screen and (min-width: 576px) {
-  .carousel-inner{
-    display: flex;
-  }  
-  .carousel-item{
-    display: block;
-    margin: 10px;
-    flex: 0 0 calc(100%/3);
-  }
   .image-wrapper2{
     height: 23vw;
   }
