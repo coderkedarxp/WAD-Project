@@ -87,6 +87,9 @@ def signupUser(request):
 def restaurants(request):
     return render(request, 'restaurants.html')
 
+def restreviews(request):
+    return render(request, 'restreviews.html')
+
 
 def history(request):
     return render(request, 'history.html')
