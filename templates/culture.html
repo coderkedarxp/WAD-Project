@@ -1,0 +1,310 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  
+<section class="container-fluid culture">
+  <!-- <div class="container top">
+        <div class="heading">
+            <h2>Culture</h2>
+        </div>
+    </div> -->
+
+  <div class="culture-page">
+    <div class="culture-header">
+      <h1>Welcome to Pune: Exploring Cultural Delights</h1>
+      <p>Discover the rich heritage and vibrant culture of Pune</p>
+    </div>
+
+    <div class="culture-history mt-4">
+      <h4 class="mt-4 text-center">Historical Background</h4>
+      <div class="card mb-3 mt-4 mb-3">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="/static/images/culture/culture-history.png" class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">PUNE</h5>
+              <p class="card-text">Nestled in the heart of Maharashtra, Pune stands as a testament to India's rich
+                tapestry of history, its roots tracing back over 1,600 years. Initially christened Punyanagari, the
+                city's strategic location at the crossroads of ancient trade routes endowed it with cultural richness
+                and economic prosperity. Flourishing under Maratha rule, Pune evolved into a vibrant center of political
+                power and intellectual discourse, nurturing luminaries who shaped the course of Indian history. From
+                being a bastion of resistance during the freedom struggle to emerging as a bustling metropolis of
+                innovation and education, Pune's journey mirrors the resilience and dynamism of the nation it
+                represents. Today, as Pune continues to thrive as Maharashtra's cultural capital, it remains deeply
+                rooted in its historical heritage while embracing the winds of change, embodying the spirit of a
+                timeless city.</p>
+                <a href="{% url 'history' %}" class="text-white text-decoration-none">
+
+                  <button class="btn">Know More</button>
+                </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="culture-attraction mt-5 text-center">
+      <h4>Cultural Attractions</h4>
+      <p>Explore Pune's iconic cultural attractions, from historic landmarks to contemporary art galleries...</p>
+      <!--carousel start-->
+      <div class="d-flex justify-content-center">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="cards-wrapper">
+                <div class="card" style="width: 18rem;">
+                  <img src="/static/images/culture/darshan-museum-1.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <p class="fw-bold">Darshan Museum</p>
+                    <p class="card-text">A unique museum showcasing the life and teachings of Sadhu Vaswani through interactive exhibits and multimedia experiences.</p>
+                  </div>
+                </div>
+                <div class="card" style="width: 18rem;">
+                  <img src="/static/images/culture/jehangir-art-gallery.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <p class="fw-bold">Jehangir Art Gallery</p>
+                    <p class="card-text">A prominent art institution housing a diverse collection of contemporary and traditional artworks, fostering cultural exchange and appreciation..</p>
+                  </div>
+                </div>
+                <div class="card" style="width: 18rem;">
+                  <img src="/static/images/culture/MahatmaPhuleMuseum.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <p class="fw-bold">Mahatma Phule Museum</p>
+                    <p class="card-text">Dedicated to social reformers Mahatma Phule and Savitribai Phule, this museum highlights their contributions to education, women's rights, and social justice.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <div class="cards-wrapper">
+                <div class="card" style="width: 18rem;">
+                  <img src="/static/images/culture/NehruMemorialMuseum.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <p class="fw-bold">Nehru Memorial Museum</p>
+                    <p class="card-text">A tribute to India's first Prime Minister, Jawaharlal Nehru, featuring exhibits on his life, political career, and role in shaping modern India.</p>
+                  </div>
+                </div>
+                <div class="card" style="width: 18rem;">
+                  <img src="/static/images/culture/RajaDinkarKelkarMuseum.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <p class="fw-bold">Raja Dinkar Kelkar Museum</p>
+                    <p class="card-text">Home to a vast collection of artifacts and antiques collected by Dr. Dinkar Kelkar, showcasing the rich cultural heritage of India.</p>
+                  </div>
+                </div>
+                <div class="card" style="width: 18rem;">
+                  <img src="/static/images/culture/tribal-museum.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <p class="fw-bold">Tribal Museum Pune</p>
+                    <p class="card-text">Celebrating the cultural diversity of India's tribal communities, this museum exhibits traditional art, crafts, and lifestyles, offering insights into tribal heritage.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="carousel-controls mb-5">
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+              data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+              data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!--carousel end-->
+    </div>
+
+    <div class="culture-traditionals mt-5 text-center">
+      <h2>Traditional Festivals</h2>
+      <p>Experience Pune's vibrant festival culture, including Ganesh Chaturthi, Diwali, Gudi Padwa, and more...</p>
+      <div class="card-group">
+        <div class="cards-wrapper">
+          <div class="card bg-dark text-white">
+            <img src="/static/images/culture/Diwali.png" class="card-img" alt="...">
+            <div class="card-img-overlay">
+              <div class="hoverdiv">
+                <h5 class="card-title">Diwali</h5>
+                <p class="card-text"><strong>The festival of lights and victory</strong></p>
+                <p class="card-text">Diwali in Pune is a radiant celebration marked by joyous gatherings, illuminated
+                  streets, and the vibrant glow of traditional lamps. Families unite to exchange sweets, light
+                  fireworks, and adorn their homes with colorful decorations. It's a time of shared happiness and
+                  spiritual reflection, infusing the city with a lively and festive atmosphere.</p>
+              </div>
+            </div>
+          </div>
+          <div class="card bg-dark text-white">
+            <img src="/static/images/culture/Ganapatifestival.png" class="card-img" alt="...">
+            <div class="card-img-overlay">
+              <div class="hoverdiv">
+                <h5 class="card-title">Ganapati</h5>
+                <p class="card-text"><strong>Pune's Joyful Celebration of Devotion and Unity</strong></p>
+                <p class="card-text">Ganapati Festival in Pune is a jubilant affair, characterized by colorful
+                  processions, melodious chants, and fervent devotion. Streets bustle with worshippers seeking the
+                  blessings of Lord Ganesha, accompanied by traditional music and the aroma of festive sweets. It's a
+                  time of communal harmony and cultural celebration, encapsulating the essence of devotion and festivity
+                  in Pune's vibrant tapestry.</p>
+              </div>
+            </div>
+          </div>
+          <div class="card bg-dark text-white">
+            <img src="/static/images/culture/GudiPadwa.png" class="card-img" alt="...">
+            <div class="card-img-overlay">
+              <div class="hoverdiv">
+                <h5 class="card-title">Gudi Padwa</h5>
+                <p class="card-text"><strong>Pune's Timeless Celebration of New Beginnings and Cultural
+                    Heritage</strong></p>
+                <p class="card-text">
+                  Gudi Padwa in Pune marks the start of the Hindu New Year with vibrant festivities. Streets bloom with
+                  colors, homes gleam with decorations, and families unite to raise the auspicious Gudi flag. Amidst the
+                  aroma of festive treats, communities embrace new beginnings and cultural heritage in Pune's spirited
+                  celebrations of Gudi Padwa.</p>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+
+    <div class="culture-cuisine mt-5 text-center d-flex justify-content-center align-items-center flex-column">
+      <h4>Cuisine</h4>
+      <p>Indulge in Pune's diverse culinary delights, from traditional Maharashtrian dishes to street food...</p>
+      <div class="card-wrapper ">
+        <div class="card mb-3" style="max-width: 540px;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="/static/images/culture/Mastanicuisine.jpg" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">Mastani</h5>
+                <p class="card-text">A luscious and indulgent milkshake-like beverage from Pune, prepared with thickened
+                  milk, ice cream, and various toppings such as nuts, fruits, and flavored syrups. </p>
+                <div class="map-container1">
+                  <button onclick="showMap1()" class="btn">Visit Now</button>
+                  <div id="map"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-3" style="max-width: 540px;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="/static/images/culture/Misalpavcuisine.jpg" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">Misal Pav</h5>
+                <p class="card-text">A spicy and flavorful Maharashtrian dish consisting of sprouted lentils cooked in a
+                  fiery gravy, served with pav (bread) and topped with crunchy farsan.</p>
+                <div class="map-container1">
+                  <button onclick="showMap2()" class="btn">Visit Now</button>
+                  <div id="map"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-3" style="max-width: 540px;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="/static/images/culture/Chitale-Bhakarwadi.jpg" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">Bakarwadi</h5>
+                <p class="card-text">A crispy and savory snack from Maharashtra made of gram flour dough rolled into
+                  spirals, stuffed with a spicy and tangy mixture, and fried until golden brown.</p>
+                <div class="map-container1">
+                  <button onclick="showMap3()" class="btn">Visit Now</button>
+                  <div id="map"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cuisine-more d-flex text-center">
+        <button class="btn" onclick="viewmorecuisine()">Explore More</button>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="culture-language mt-5 text-center">
+      <h4>Language and Puneri-Patya</h4>
+      <p>Explore Pune's linguistic heritage and vibrant Puneri-Patya culture, renowned for its witty and humorous
+        expressions...</p>
+      <div class="language-img">
+        <img src="/static/images/culture/marathilanguage.jpg" alt="">
+      </div>
+      <div class="card text-center mt-3 ml-3 mr-3">
+        <div class="card-body">
+          <h5 class="card-title">Marathi - Pride of Pune</h5>
+          <p class="card-text info">
+            Puneri Marathi, a dialect of the language spoken primarily in Pune, Maharashtra, reflects the city's unique
+            cultural identity and vibrant history. Characterized by its distinct accent, intonation, and vocabulary,
+            Puneri Marathi is renowned for its wit, humor, and straightforwardness. Influenced by the city's
+            cosmopolitan nature and diverse population, Puneri Marathi incorporates words and expressions from various
+            languages, including Hindi, English, and Urdu. Despite these influences, Puneri Marathi maintains its
+            authenticity and is cherished by locals as a symbol of Pune's rich linguistic heritage. From colloquial
+            phrases known as "Puneri Patya" to everyday conversations, Puneri Marathi adds a colorful flair to the
+            cultural tapestry of Pune, fostering a sense of camaraderie and belonging among its speakers.</p>
+        </div>
+      </div>
+
+    </div>
+    <hr>
+    <div class="patya text-center mt-3">
+      <h4>Puneri Patya</h4>
+      <div class="row">
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <p class="card-text">"पुणे करारे पिटले, तर पुणे पुटले" (Pune's slaps hurt more than a sword's strike.)</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <p class="card-text">"पुणे ने पुणे वाचले, नाही तर मग अंगावर रांगले" (If one behaves like Punekar in Pune,
+                if not, then the limbs will be colored.)</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <p class="card-text">"पुणे करारे पिटले, तर आपल्या जवानाला शिक्षणाची जगातली पाठी" (If Punekar slaps you,
+                then consider it a lesson in education for your future generations.)</p>
+            </div>
+          </div>
+        </div>
+        <!-- Add more cards as needed -->
+      </div>
+    </div>
+
+    <p class="text-center mt-3">Want to see more? Visit the links below!</p>
+    <div class="d-flex justify-content-center gap-3">
+      <a href="https://www.instagram.com/puneri_patya_official/?hl=en"><i class="fab fa-facebook fa-2x"></i></a>
+      <a href="https://www.facebook.com/groups/PuneriP/"><i class="fab fa-instagram fa-2x"></i></a>
+      <a href="https://in.pinterest.com/sadanandsarate/puneri-patya/"><i class="fab fa-pinterest fa-2x"></i></a>
+    </div>
+    <hr>
+  </div>
+</section>
+<script src="/static/js/main.js"></script>
+{% endblock %}

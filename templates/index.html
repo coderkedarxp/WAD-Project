@@ -10,6 +10,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
+  <link rel="icon" type="image/x-icon" href="/static/images/LogoPforico.ico">
   <link rel="stylesheet" href="../static/css/styles.css">
   <link rel="stylesheet" href="/static/css/navbar.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -53,32 +54,48 @@
   <header id="home">
     <nav>
       <div class="nav__bar">
-        <div class="nav__logo"><a href="#">PuneCompass.</a></div>
+        <div class="nav__logo"><a class="text-decoration-none" href="{% url 'home' %}">PuneCompass.</a></div>
         <ul class="nav__links">
-          <li class="link"><a href="#home">Home</a></li>
+          <li class="link"><a href="{% url 'touristPlaces' %}">Places to Visit</a></li>
           <li class="link"><a href="{% url 'transport' %}">Transport</a></li>
-          <li class="link"><a href="{% url 'history' %}">History</a></li>
           <li class="link"><a href="{% url 'restaurants' %}">Restaurants</a></li>
-          <li class="link"><a href="{% url 'touristPlaces' %}">Tourist Places</a></li>
+          <li class="link"><a href="{% url 'touristPlaces' %}">Accomodation</a></li>
           {% if not request.user.is_authenticated %}
           <li class="link"><a href="{% url 'login' %}">Login</a></li>
           <li class="link"><a href="{% url 'signup' %}">Sign Up</a></li>
           {% endif %}
+          {% if request.user.is_authenticated %}
+          <li class="link"><a href="{% url 'userProfile' %}">Your Account</a></li>
+          <li class="link"><a href="{% url 'logout' %}">Logout</a></li>
+          {% endif %}
+
         </ul>
       </div>
     </nav>
+    {% if messages %}
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+      {% for message in messages %}
+      {{ message }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      {% endfor %}
+
+    </div>
+
+    {% endif %}
     <div class="section__container header__container">
       {% if request.user.is_authenticated %}
       <h1>Welcome {{ request.user.first_name }}!</h1>
       <h4>Explore the colourful world</h4>
-      <button class="btn">
-        {% else %}
-        <h1>The new way to plan your next adventure</h1>
-        <h4>Explore the colourful world</h4>
+
+      {% else %}
+      <h1>The new way to plan your next adventure</h1>
+      <h4>Explore the colourful world</h4>
+      {% endif %}
+      <a href="#discover" class="text-decoration-none">
         <button class="btn">
-        {% endif %}
           Explore More <i class="fas fa-arrow-right"></i>
         </button>
+      </a>
     </div>
   </header>
   <!--header end-->
@@ -97,11 +114,12 @@
           <div class="discover__card__content" data-aos="fade-up">
             <h4>FOOD</h4>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum quae beatae adipisci eos reiciendis,
-              dignissimos enim atque. Similique, modi delectus voluptate.
+              Pune's culinary scene is a delicious fusion of traditional Maharashtrian flavors, innovative gastronomy,
+              and global cuisines, satisfying every palate with its diverse offerings.
             </p>
             <button class="discover__btn">
-              Discover More <i class="fa-solid fa-arrow-right"></i>
+              <a class="text-white text-decoration-none" href="{% url 'food' %}">
+                Discover More </a><i class="fa-solid fa-arrow-right"></i></i>
             </button>
           </div>
         </div>
@@ -112,11 +130,12 @@
           <div class="discover__card__content" data-aos="fade-up">
             <h4>CULTURE</h4>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum quae beatae adipisci eos reiciendis,
-              dignissimos enim atque. Similique, modi delectus voluptate.
+              Pune's vibrant culture blends ancient traditions with modern innovations, creating a dynamic tapestry of
+              art, music, and heritage.
             </p>
             <button class="discover__btn">
-              Discover More <i class="fa-solid fa-arrow-right"></i></i>
+              <a class="text-white text-decoration-none" href="{% url 'culture' %}">
+                Discover More </a><i class="fa-solid fa-arrow-right"></i></i>
             </button>
           </div>
         </div>
@@ -127,12 +146,16 @@
           <div class="discover__card__content" data-aos="fade-up">
             <h4>NATURE</h4>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum quae beatae adipisci eos reiciendis,
-              dignissimos enim atque. Similique, modi delectus voluptate.
+              Pune's lush greenery and tranquil surroundings offer a serene escape from the bustling city life, inviting
+              harmony with nature at every turn.
             </p>
+
+
             <button class="discover__btn">
-              Discover More <i class="fa-solid fa-arrow-right"></i></i>
+              <a class="text-white text-decoration-none" href="{% url 'nature' %}">
+                Discover More </a><i class="fa-solid fa-arrow-right"></i></i>
             </button>
+
           </div>
         </div>
       </div>
@@ -141,127 +164,153 @@
   <hr>
   <section class="journals" id="journals" data-aos="fade-up">
     <div class="section__container journals__container">
-      <h2 class="section__header">The travel journals</h2>
-      <p class="section__subheader">
-        A journal is a place to record new things you have discovered while
-        exploring various places you visit.
-      </p>
-      <div class="journals__grid">
-        <div class="journals__card" data-aos="fade-up">
-          <img src="/static/images/traveljournal1.jpg" alt="journal" />
-          <div class="journals__content">
-            <div class="journals__author">
-
-              <p>By Kiara Sethi</p>
+      <h2 class="section__header">The travel gallery</h2>
+      <p class="section__subheader">A gallery is a place to record new things you have discovered while exploring
+        various places you visit.</p>
+      <div class="row">
+        {% for post in posts %}
+        <div class="col-md-4 my-3">
+          <div class="card journals__card">
+            <div class="card-header bg-transparent border-success">
+              <h6>{{ post.user.username }}</h6>
             </div>
-            <h4>What to pack for Pune?</h4>
-            <div class="journals__footer">
-              <p>18 Apr 2022</p>
-              <span>
-                <a href="#"><i class="fa-solid fa-arrow-right"></i></a>
-              </span>
+            <img src="/media/{{ post.image }}" class="card-img-top" alt="...">
+            <hr>
+            <div class="card-body">
+              <p class="card-text">{{ post.caption }}</p>
+              <a class="text-decoration-none " target="_blank" href="/{{ post.link }}/{{ post.location.id }}">
+                <p class="card-title"><i class="fa-solid fa-location-dot"></i>&ensp;{{ post.location }}</p>
+              </a>
             </div>
           </div>
         </div>
-        <div class="journals__card" data-aos="fade-up">
-          <img src="/static/images/traveljournal2.jpg" alt="journal" />
-          <div class="journals__content">
-            <div class="journals__author">
-
-              <p>By Archana Mahajan</p>
-            </div>
-            <h4>The best weekend spots.</h4>
-            <div class="journals__footer">
-              <p>22 Jun 2023</p>
-              <span>
-                <a href="#"><i class="fa-solid fa-arrow-right"></i></a>
-              </span>
-            </div>
-          </div>
-        </div>
-        <div class="journals__card" data-aos="fade-up">
-          <img src="/static/images/traveljournal3.jpg" alt="journal" />
-          <div class="journals__content">
-            <div class="journals__author">
-
-              <p>By Utakash Sharma</p>
-            </div>
-            <h4>Spirirtual peace and beauty.</h4>
-            <div class="journals__footer">
-              <p>05 Sep 2022</p>
-              <span>
-                <a href="#"><i class="fa-solid fa-arrow-right"></i></a>
-              </span>
-            </div>
-          </div>
-        </div>
-        <div class="journals__card" data-aos="fade-up">
-          <img src="/static/images/traveljournal4.jpg" alt="journal" />
-          <div class="journals__content">
-            <div class="journals__author">
-
-              <p>By Henry Armstrong</p>
-            </div>
-            <h4>A beginner's guide to Pune.</h4>
-            <div class="journals__footer">
-              <p>14 Dec 2022</p>
-              <span>
-                <a href="#"><i class="fa-solid fa-arrow-right"></i></a>
-              </span>
-            </div>
-          </div>
-        </div>
-        <div class="journals__card" data-aos="fade-up">
-          <img src="/static/images/traveljournal5.jpg" alt="journal" />
-          <div class="journals__content">
-            <div class="journals__author">
-
-              <p>By Rebecca Patterson</p>
-            </div>
-            <h4>Exploring and Shopping.</h4>
-            <div class="journals__footer">
-              <p>10 Feb 2022</p>
-              <span>
-                <a href="#"><i class="fa-solid fa-arrow-right"></i></a>
-              </span>
-            </div>
-          </div>
-        </div>
-        <div class="journals__card" data-aos="fade-up">
-          <img src="/static/images/traveljournal6.jpg" alt="journal" />
-          <div class="journals__content">
-            <div class="journals__author">
-
-              <p>By Aaran Kennedy</p>
-            </div>
-            <h4>Travel tip's you'll wish you'd known sooner.</h4>
-            <div class="journals__footer">
-              <p>20 Mar 2023</p>
-              <span>
-                <a href="#"><i class="fa-solid fa-arrow-right"></i></a>
-              </span>
-            </div>
-          </div>
-        </div>
+        {% endfor %}
+        <!-- Add more cards as needed -->
       </div>
       <div class="journals__btn" data-aos="fade-up">
-        <button class="btn">
-          View All Journals <i class="ri-arrow-right-line"></i>
-        </button>
+        <a href="{% url 'gallery' %}">
+          <button class="btn">View All Pictures <i class="fa-solid fa-arrow-right"></i></button>
+        </a>
       </div>
     </div>
   </section>
   <hr>
-  <section class="gallery">
-    <div class="gallery__container">
-      <h2 class="section__header">Gallery</h2>
-      <p class="section__subheader">
-        See Pune From Here
-      </p>
+  <section class="contact">
+    <div class="section__container contact__container">
+      <h2 class="section__header">Contact</h2>
+      <div class="contact_space">
+        <div class="image-wrapper contact_img"><img src="/static/images/Contactpune.png" alt="">
+        </div>
+        <form action="" id="">
+          <legend>Fill Details</legend>
+          <div class="inputbox">
+            <input type="text" placeholder="Name">
+            <input type="text" placeholder="Email">
+          </div>
+          <div class="inputbox">
+            <input type="number" placeholder="Number">
+            <input type="text" placeholder="Subject">
+          </div>
+          <textarea name="" id="" cols="30" rows="10" placeholder="Message"></textarea>
+          <input type="submit" class="btn" value="Send Message">
+        </form>
+      </div>
     </div>
-    <!--carousel start-->
-    
-    <!--carousel send-->
+  </section>
+
+  <!-- about us section -->
+  <hr>
+  <section class="aboutus">
+    <div class="section__container aboutus__container">
+      <h2 class="section__header">About Us</h2>
+      <div class="about-description">
+        <p>
+
+          "Welcome to Pune, where history meets modernity and culture intertwines with innovation. At Pune City Tours,
+          we are passionate about showcasing the rich tapestry of experiences this vibrant city has to offer.</p>
+
+        <p>With a deep-rooted understanding of Pune's heritage, coupled with a keen eye for its contemporary allure, our
+          team is dedicated to curating unforgettable journeys for visitors from all walks of life. From the majestic
+          forts that narrate tales of valor to the bustling markets brimming with flavors and colors, every corner of
+          Pune beckons with its unique charm.</p>
+
+        <p>As your local guides, we take pride in unraveling the hidden gems and lesser-known treasures of Pune,
+          ensuring that each excursion is as enlightening as it is exhilarating. Whether you're a history enthusiast, a
+          culinary adventurer, or simply seeking moments of serenity amidst the urban hustle, we tailor our tours to
+          cater to your interests and preferences.</p>
+
+        <p>Join us as we navigate the labyrinthine lanes of Pune, where every cobblestone has a story to tell and every
+          vista promises a new perspective. Let Pune City Tours be your trusted companion in discovering the heart and
+          soul of this dynamic metropolis."
+        </p>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="afooter mt-5">
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="footer-about">
+              <div class="footer-logo">
+                <a href="#"><img src="/static/images/LogoP-wbg.png" alt=""></a>
+                <h6>PuneCompass</h6>
+              </div>
+              <p>Thank you for visiting!</p>
+              <i class="fa-brands fa-square-facebook"></i>
+              <i class="fa-brands fa-square-twitter"></i>
+              <i class="fa-brands fa-square-instagram"></i>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="footer-widget">
+              <h6>Links</h6>
+              <ul>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Transport</a></li>
+                <li><a href="#">History</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="footer-widget">
+              <h6>Address</h6>
+              <a href="#">
+                <p>PES Modern College of Engineering, Pune</p>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="footer-widget">
+              <h6>A project by</h6>
+              <div class="footer-newsletter form-inline">
+                <p> <a class="text-secondary" target="_blank"
+                    href="https://www.linkedin.com/in/mihika-saraf-8b6557231/"> Mihika Saraf</a> <br> <a
+                    class="text-secondary" href="https://www.linkedin.com/in/avneesh-deshmukh">Avneesh Deshmukh</a> <br>
+                  <a class="text-secondary" target="_blank"
+                    href="https://www.linkedin.com/in/kedar-c-044938283?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">Kedar
+                    Chikane</a> <br> <a class="text-secondary" target="_blank"
+                    href="https://www.linkedin.com/in/rutuja-chanakhekar/">Rutuja Chanakhekar</a> </p>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container copyright">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <div class="footer-copyright-text">
+              <p>Copyright &copy; 2024 All rights reserved</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
   </section>
 
 

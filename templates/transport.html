@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="modal" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title  text-black-50" id="exampleModalLabel">Please choose an option</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-black" id="modalBodyContent">
+                Which app would you like to use?
+            </div>
+            <div class="modal-footer ">
+                <a href="https://book.olacabs.com/" target="_blank">
+                    <button type="button" class="btn btn-info custom-font" data-bs-dismiss="modal">Ola</button>
+                </a>
+                <a href="https://www.uber.com/in/en/?ad_id=692155360715&campaign_id=20969172135&gclid=Cj0KCQjw2uiwBhCXARIsACMvIU08rRI9DdOp_h48AjaU-nphGItkGO2vjbavl8BYdtXpSMZ5Z1BZaOkaAgyCEALw_wcB&kw=uber&kwid=kwd-12633382&uclick_id=3fcd478b-25b1-4cc9-a6ce-fed8d6f62888&utm_campaign=CM2366823-search-google-brand_77_-99_IN-National_r_web_pme_cpc_en_T1_Intercity-Generic_BM_uber_kwd-12633382_692155360715_166123407264_b_c&utm_source=AdWords_Brand" target="_blank">
+                    <button type="button" class="btn btn-info" data-bs-dismiss="modal">Uber</button>
+                </a>
+                <a href="https://www.rapido.bike/" target="_blank">
+                    <button type="button" class="btn btn-info" data-bs-dismiss="modal">Rapido</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title  text-black-50" id="exampleModalLabel">Please choose an option</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-black" id="modalBodyContent">
+                Which app would you like to use?
+            </div>
+            <div class="modal-footer ">
+                <a href="https://book.olacabs.com/" target="_blank">
+                    <button type="button" class="btn btn-info custom-font" data-bs-dismiss="modal">Ola</button>
+                </a>
+                <a href="https://www.uber.com/in/en/?ad_id=692155360715&campaign_id=20969172135&gclid=Cj0KCQjw2uiwBhCXARIsACMvIU08rRI9DdOp_h48AjaU-nphGItkGO2vjbavl8BYdtXpSMZ5Z1BZaOkaAgyCEALw_wcB&kw=uber&kwid=kwd-12633382&uclick_id=3fcd478b-25b1-4cc9-a6ce-fed8d6f62888&utm_campaign=CM2366823-search-google-brand_77_-99_IN-National_r_web_pme_cpc_en_T1_Intercity-Generic_BM_uber_kwd-12633382_692155360715_166123407264_b_c&utm_source=AdWords_Brand" target="_blank">
+                    <button type="button" class="btn btn-info" data-bs-dismiss="modal">Uber</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex justify-content-center mt-5">
+    <h1>Modes Of Transport</h1>
+</div>
+
+<div class="circle-container">
+
+    <div class="circle-container">
+        <a href="https://moovitapp.com/index/en/public_transit-lines-Pune-5884-1509110" target="_blank"
+            class="circle">Bus</a>
+        <a href="https://www.punelocaltraintimetable.com/" target="_blank" class="circle">Train</a>
+        <a href="https://punemetrorail.org/" target="_blank" class="circle">Metro</a>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal1" class="circle">Auto</a>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" class="circle">Taxi</a>
+    </div>
+</div>
+
+<div class="m-5 p-5">
+    <p>Pune, a vibrant city in Maharashtra, India, offers a multitude of transportation options to explore its rich cultural heritage and scenic beauty.</p>
+    <p>1. <strong>Bus:</strong> Pune's extensive bus network covers the length and breadth of the city, providing an affordable and convenient mode of transportation for tourists and locals alike.</p>
+    <p>2. <strong>Train:</strong> Experience the charm of traveling by train with Pune's local train network. Check out the local train timetable for seamless travel within the city.</p>
+    <p>3. <strong>Metro:</strong> Pune Metro Rail, with its modern infrastructure, offers a swift and comfortable way to navigate through key areas of the city.</p>
+    <p>4. <strong>Auto Rickshaw:</strong> Embrace the local flavor by hopping on an auto rickshaw for short distances. Negotiate fares and enjoy the ride through Pune's bustling streets.</p>
+    <p>5. <strong>Taxi:</strong> For a more personalized travel experience, opt for a taxi service to explore Pune at your own pace. Reliable and convenient, taxis are readily available throughout the city.</p>
+    <p>Whether you're visiting historical landmarks, indulging in culinary delights, or exploring Pune's vibrant markets, these transportation options ensure a memorable journey in the cultural capital of Maharashtra.</p>
+</div>
+
+
+
+{% endblock %}

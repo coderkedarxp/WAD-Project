@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="d-flex justify-content-center mt-5">
+    <h1>Add Tourist Place</h1>
+</div>
+<div class="d-flex justify-content-center mx-5 p-5 ">
+    <form action="{% url 'addTouristPlace' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="name">Name</label>
+        <input type="text" name="name" class="form-control"><br>
+        <label for="address">Address</label><br>
+        <textarea name="address" class="form-control" id="address" cols="60" rows="2"></textarea><br>
+        <label for="location">Location On Google Map</label>
+        <textarea id="location" cols="60" rows="2" name="location" class="form-control"></textarea><br>
+        <label for="fees">  Entry Fees</label>
+        <input type="number" name="entryFees" class="form-control"><br>
+        <label for="description">Description</label><br>
+        <textarea name="description" class="form-control" id="description" cols="60" rows="4"></textarea><br>
+        <Label for="categories" >Categories of Place</Label><br>
+        <input type="checkbox" id="Historical" name="categories" class="form-check-input" value="Historical"><label for="Historical"> &nbsp;  Historical</label><br>
+        <input type="checkbox" id="Shopping" name="categories" class="form-check-input" value="Shopping"><label for="Shopping">&nbsp;  Shopping</label><br>
+        <input type="checkbox" id="Cultural" name="categories" class="form-check-input" value="Cultural"><label for="Cultural">&nbsp;  Cultural</label><br>
+        <input type="checkbox" id="Nature" name="categories" class="form-check-input" value="Nature"><label for="Nature">&nbsp; Nature</label> <br>
+        <input type="checkbox" id="Religious" name="categories" class="form-check-input" value="Religious"><label for="Religious">&nbsp;  Religious</label><br>
+        <input type="checkbox" id="Adventure" name="categories" class="form-check-input" value="Adventure"><label for="Adventure">&nbsp; Adventure</label><br>
+        <input type="checkbox" id="Entertainment" name="categories" class="form-check-input" value="Entertainment"><label for="Entertainment">&nbsp;  Entertainment</label><br>
+        <input type="checkbox" id="Sports" name="categories" class="form-check-input" value="Sports"><label for="Sports">&nbsp; Sports</label><br>
+        <input type="checkbox" id="Art" name="categories" class="form-check-input" value="Art"><label for="Art">&nbsp;  Art</label><br>
+        <input type="checkbox" id="Educational" name="categories" class="form-check-input" value="Educational"><label for="Educational">&nbsp; Educational</label><br>
+        <input type="checkbox" id="Eco Tourism" name="categories" class="form-check-input mb-4" value="Eco Tourism"><label for="Eco Tourism">&nbsp;  Eco Tourism</label><br>
+        
+        <label for="images">Images</label><br>
+        <input name="images" type="file" multiple class="form-control"><br>
+
+
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+</div>
+
+<script src="/static/js/addRestaurant.js"></script>
+{% endblock %}

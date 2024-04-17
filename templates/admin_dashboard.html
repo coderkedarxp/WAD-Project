@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="d-flex justify-content-center my-5">
+    <h1>Welcome Admin!</h1>
+</div>
+<div class="container d-flex justify-content-center my-5 py-5">
+    <a class="m-2" href="{% url 'addRestaurant' %}"><button class="btn">Add Restaurant</button></a>
+    <a class="m-2" href="{% url 'addTouristPlace' %}"><button class="btn">Add Tourist Place</button></a>
+    <a class="m-2" href="{% url 'addAccommodation' %}"><button class="btn">Add Accommodation</button></a>
+</div>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<section class="container-fluid restviews">
+    <div class="container top">
+        <div class="heading">
+            {% if restaurant %}
+            <a class="text-decoration-none text-white" href="{% url 'restaurant' restaurant.id %}"><h2>{{ restaurant.name }}</h2></a>
+            {% elif place %}
+            <a class="text-decoration-none text-white" href="{% url 'touristPlace' place.id %}"><h2>{{ place.name }}</h2></a>
+            {% else %}
+            <!-- <a class="text-decoration-none text-white" href="{% url 'touristPlace' place.id %}"><h2>{{ place.name }}</h2></a> -->
+            {% endif %}
+            <hr>
+        </div>
+    </div>
+</section>
+<section class="container-fluid restdes p-5">
+    <h4>Reviews</h4>
+    {% for review in reviews %}
+    <div class="card my-3">
+        <div class="card-body">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+                <div class="d-flex align-items-center">
+                    {% if review.user.gender == 'male' %}
+                    <img src="{% static 'images/male.png' %}" class="rounded-circle me-2" width="40" height="40" alt="Profile Picture">
+                    {% elif review.user.gender == 'female' %}
+                    <img src="{% static 'images/female.png' %}" class="rounded-circle me-2" width="40" height="40" alt="Profile Picture">
+                    {% else %}
+                    <img src="{% static 'images/other.png' %}" class="rounded-circle me-2" width="40" height="40" alt="Profile Picture">
+                    {% endif %}
+                    <p class="card-title">{{ review.user.username }}</p>
+                </div>
+                {% if request.user == review.user %}
+                    
+                <div>
+                    {% if place %}
+                    <a href="/delete_review/touristPlace+{{ review.id }}">
+                        <i class="fa-solid fa-trash" style="color: red; cursor:pointer"></i> <!-- Replace 'fa-trash' with the appropriate delete icon class -->
+                    </a>
+                    
+                    {% elif restaurant %}
+                    <a href="/delete_review/Restaurant+{{ review.id }}">
+                        <i class="fa-solid fa-trash" style="color: red; cursor:pointer"></i> <!-- Replace 'fa-trash' with the appropriate delete icon class -->
+                    </a>
+                        
+                    {% else %}
+                        
+                    {% endif %}
+                </div>
+                {% endif %}
+            </div>
+            <div class="stars">
+                {% for star in review.stars %}
+                <i class="fa-solid fa-star" style="color: #ffd700;"></i>
+                {% endfor %}
+            </div>
+            <p class="card-text">{{ review.comment }}</p>
+        </div>
+    </div>
+    
+    {% endfor %}
+    
+
+</section>
+{% endblock %}

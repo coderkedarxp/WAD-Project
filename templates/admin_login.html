@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+
+<section id="hero">
+  <div class="container hero-wrap">
+    <div class="quote-wrap">
+      <p>"Welcome to PuneCompass - your guide to Pune's best! Explore the city's hidden treasures, vibrant markets, and
+        rich culture with us. Let's start your adventure!"</p>
+      <em>__PuneCompass</em>
+    </div>
+    <div class="login-wrap">
+      <div class="login-wrap-box">
+        <div class="login-title">
+          <h3>Login</h3>
+          <p>Sign in to your account to continue</p>
+        </div>
+        <form action="{% url 'loginAdmin' %}" method="POST">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <p>
+            <label for="username">Username</label>
+            <input type="text" placeholder="username" name="username">
+          </p>
+          <p>
+          <div class="d-flex">
+            <label for="password">Password</label>
+          </div>
+          <input type="password" placeholder="password" name="password" id="password"><i class="fa-solid fa-eye-slash" onclick="pass()"
+            id="pass-icon" style="cursor: pointer;"></i>
+          </p>
+          <p>
+            <button type="submit" class="btn-submit">Sign in</button>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<script src="/static/js/main.js"></script>
+{% endblock %}
+</body>
+
+</html>

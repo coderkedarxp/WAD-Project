@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+
+
+<section class="container-fluid rests">
+    <div class="container top">
+        <div class="heading">
+            <h2>Accomodations</h2>
+        </div>
+    </div>
+
+    <div class="container mb-4">
+        <form action="{% url 'accommodations' %}" method="GET">
+            {% csrf_token %}
+            <div>
+                <label class="mb-2">Category:</label><br>
+                <div class="d-flex">
+                    <div class="form-check me-4">
+                        <input class="form-check-input" {% if "Family" in checked %} checked {% endif %} type="checkbox"
+                            name="category" value="Family" id="veg">
+                        <label class="form-check-label" for="veg">Family</label>
+                    </div>
+                    <div class="form-check me-4">
+                        <input class="form-check-input" {% if "bnb" in checked %} checked {% endif %}
+                            type="checkbox" name="category" value="bnb" id="bnb">
+                        <label class="form-check-label" for="bnb">Bed & Breakfast</label>
+                    </div>
+                    <div class="form-check me-4">
+                        <input class="form-check-input" {% if "luxurious" in checked %} checked {% endif %}
+                            type="checkbox" name="category" value="luxurious" id="luxurious">
+                        <label class="form-check-label" for="luxurious">Luxurious</label>
+                    </div>
+                    <div class="form-check me-4">
+                        <input class="form-check-input" {% if "5-star" in checked %} checked {% endif %}
+                            type="checkbox" name="category" value="5-star" id="star">
+                        <label class="form-check-label" for="star">5 Star</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" {% if "Swimming Pool" in checked %} checked {% endif %}
+                            type="checkbox" name="category" value="Swimming Pool" id="SwimmingPool">
+                        <label class="form-check-label" for="SwimmingPool">Swimming Pool</label>
+                    </div>
+                </div>
+
+
+
+
+                <!-- Add more checkboxes for other categories -->
+            </div>
+            <!-- Add more filter options here as needed -->
+            <div class="d-flex">
+                <div>
+                    <button type="submit" class="btn btn-primary mt-4">Apply Filter</button>
+                </div>
+
+                <a style="cursor: pointer;" id="clearFilter" class="text-danger mt-5">Clear Filters</a>
+
+            </div>
+
+        </form>
+    </div>
+
+    <div class="container">
+        {% if lodges %}
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for lodge in lodges %}
+
+            <div class="col">
+                <div class="card border-dark">
+                    <img src="/media/{{lodge.image.image }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ lodge.lodge.name }}</h5>
+                        <h6 class="card-title truncated-text">{{ lodge.lodge.address }}</h6>
+
+                        {{ lodge.lodge.rating }} <i class="fa-solid fa-star" style="color: #ffd700;"></i>
+                        <p>Starting at &#x20b9;{{ lodge.lodge.priceRange }}</p>
+
+                        <p class="card-text truncated-text">{{ lodge.lodge.description }}</p>
+                        <a href="{% url 'accommodation' id=lodge.lodge.id %}" class="btn btn-primary">View</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+            {% else %}
+            <h1 class="fs-1">Sorry! No places match the provided filter....</h1>
+
+            {% endif %}
+
+        </div>
+</section>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let clearFilter = document.querySelector('#clearFilter');
+
+        clearFilter.addEventListener('click', function () {
+
+            // Get all the checkboxes
+            let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+            // Loop through each checkbox and uncheck it
+            checkboxes.forEach(function (checkbox) {
+                checkbox.checked = false;
+            });
+        });
+    });
+</script>
+
+{% endblock %}
+</body>
+
+</html>

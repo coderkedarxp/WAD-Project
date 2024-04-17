@@ -5,65 +5,134 @@
 
 
 <section class="container-fluid rests">
-  <div class="container top">
-      <div class="heading">
-          <h2>Restaurants</h2>
-      </div>
-  </div>
+    <div class="container top">
+        <div class="heading">
+            <h2>Restaurants</h2>
+        </div>
+    </div>
 
-  <div class="container">
-      <div class="row row-cols-1 row-cols-md-3 g-4">
-          <div class="col">
-              <div class="card border-dark">
-                  <img src="/static/images/restaurants/alto-vino.jpg" class="card-img-top" alt="...">
-                  <div class="card-body">
-                      <h5 class="card-title">Alto Vino</h5>
-                      <h6 class="card-title">Baner</h6>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="{% url 'restreviews' %}" class="btn btn-primary">View</a>
-                  </div>
-              </div>
-          </div>
-          <div class="col">
-              <div class="card border-dark">
-                  <img src="/static/images/restaurants/spice-kitchen.jpg" class="card-img-top" alt="...">
-                  <div class="card-body">
-                      <h5 class="card-title">Spice Kitchen</h5>
-                      <h6 class="card-title">Baner</h6>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="{% url 'restreviews' %}" class="btn btn-primary">View</a>
-                  </div>
-              </div>
-          </div>
-          <div class="col">
-              <div class="card border-dark">
-                  <img src="/static/images/restaurants/paasha.jpg" class="card-img-top" alt="...">
-                  <div class="card-body">
-                      <h5 class="card-title">Paasha</h5>
-                      <h6 class="card-title">Baner</h6>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="{% url 'restreviews' %}" class="btn btn-primary">View</a>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <!-- Closing row here -->
-  </div>
+    <div class="container mb-4">
+        <form action="{% url 'restaurants' %}" method="GET" >
+            {% csrf_token %}
+                <div>
+                    <label class="mb-2">Category:</label><br>
+                    <div class="d-flex">
+                        <div class="form-check me-4">
+                            <input class="form-check-input" {% if "veg" in checked %} checked {% endif %} type="checkbox" name="category" value="veg" id="veg">
+                            <label class="form-check-label" for="veg">Veg</label>
+                        </div>
+                        <div class="form-check me-4">
+                            <input class="form-check-input" {% if "non-veg" in checked %} checked {% endif %}  type="checkbox" name="category" value="non-veg" id="non-veg">
+                            <label class="form-check-label" for="non-veg">Non-Veg</label>
+                        </div>
+                        <div class="form-check me-4">
+                            <input class="form-check-input" {% if "pure veg" in checked %} checked {% endif %} type="checkbox" name="category" value="pure veg" id="pure veg">
+                            <label class="form-check-label" for="pure veg">Pure Veg</label>
+                        </div>
+                        <div class="form-check me-4">
+                            <input class="form-check-input" {% if "italian" in checked %} checked {% endif %} type="checkbox" name="category" value="italian" id="italian">
+                            <label class="form-check-label" for="italian">Italian</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" {% if "mexican" in checked %} checked {% endif %} type="checkbox" name="category" value="mexican" id="mexican">
+                            <label class="form-check-label" for="mexican">Mexican</label>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="form-check me-4">
+                            <input class="form-check-input" {% if "maharashtrian" in checked %} checked {% endif %} type="checkbox" name="category" value="maharashtrian" id="maharashtrian">
+                            <label class="form-check-label" for="maharashtrian">Maharashtrian</label>
+                        </div>
+                        <div class="form-check me-4">
+                            <input class="form-check-input" {% if "punjabi" in checked %} checked {% endif %} type="checkbox" name="category" value="punjabi" id="punjabi">
+                            <label class="form-check-label" for="punjabi">Punjabi</label>
+                        </div>
+                        <div class="form-check me-4">
+                            <input class="form-check-input" {% if "south indian" in checked %} checked {% endif %} type="checkbox" name="category" value="south indian" id="south indian">
+                            <label class="form-check-label" for="south indian">South Indian</label>
+                        </div>
+                        <div class="form-check me-4">
+                            <input class="form-check-input" {% if "gujarati" in checked %} checked {% endif %} type="checkbox" name="category" value="gujarati" id="gujarati">
+                            <label class="form-check-label" for="gujarati">Gujarati</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" {% if "continental" in checked %} checked {% endif %} type="checkbox" name="category" value="continental" id="continental">
+                            <label class="form-check-label" for="continental">Continental</label>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="form-check">
+                            <input class="form-check-input" {% if "fast food" in checked %} checked {% endif %} type="checkbox" name="category" value="fast food" id="fast food">
+                            <label class="form-check-label" for="fast food">Fast Food</label>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    <!-- Add more checkboxes for other categories -->
+                </div>
+                <!-- Add more filter options here as needed -->
+                <div class="d-flex">
+                    <div>
+                        <button type="submit" class="btn btn-primary mt-4">Apply Filter</button>
+                    </div>
+                    
+                        <a style="cursor: pointer;" id="clearFilter" class="text-danger mt-5">Clear Filters</a>
+                    
+                </div>
+            
+        </form>
+    </div>
+
+    <div class="container">
+        {% if restaurants %}
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for restaurant_data in restaurants %}
+                
+            <div class="col">
+                <div class="card border-dark">
+                    <img src="/media/{{restaurant_data.image.image }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ restaurant_data.restaurant.name }}</h5>
+                        <h6 class="card-title truncated-text1">{{ restaurant_data.restaurant.address }}</h6>
+                        
+                            {{ restaurant_data.restaurant.rating }} <i class="fa-solid fa-star" style="color: #ffd700;"></i>
+                            <p>Starting at &#x20b9;{{ restaurant_data.restaurant.priceRange }}</p>
+
+                        <p class="card-text truncated-text1">{{ restaurant_data.restaurant.description }}</p>
+                        <a href="{% url 'restaurant' id=restaurant_data.restaurant.id %}" class="btn btn-primary">View</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+            {% else %}
+                <h1 class="fs-1">Sorry! No places match the provided filter....</h1>
+            
+            {% endif %}
+            
+    </div>
 </section>
 
 
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        let clearFilter = document.querySelector('#clearFilter');
+
+        clearFilter.addEventListener('click', function() {
+            
+            // Get all the checkboxes
+            let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            
+            // Loop through each checkbox and uncheck it
+            checkboxes.forEach(function(checkbox) {
+                checkbox.checked = false;
+            });
+        });
+    });
+</script>
+
 {% endblock %}
 </body>
+
 </html>
