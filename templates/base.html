@@ -2,61 +2,134 @@
 <html lang="en">
 
 <head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"
-        integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/static/css/navbar.css">
-    <link rel="stylesheet" href="/static/css/styles.css">
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/x-icon" href="/static/images/LogoPforico.ico">
 
-    <!--splide carousel links-->
-    
-    <title>PuneCompass</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"
+    integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <link rel="stylesheet" href="/static/css/navbar.css">
+  <link rel="stylesheet" href="/static/css/styles.css">
+
+  <!--splide carousel links-->
+
+  <title>{{ title }}</title>
 </head>
 
 <body>
-    <header id="home">
-        <nav>
-            <div class="nav__bar">
-                <div class="nav__logo"><a href="#">PuneCompass.</a></div>
-                <ul class="nav__links">
-                    <li class="link"><a href="{% url 'home' %}">Home</a></li>
-                    <li class="link"><a href="{% url 'transport' %}">Transport</a></li>
-                    <li class="link"><a href="{% url 'history' %}">History</a></li>
-                    <li class="link"><a href="{% url 'restaurants' %}">Restaurants</a></li>
-                    {% if not request.user.is_authenticated %}
-                    <li class="link"><a href="{% url 'login' %}">Login</a></li>
-                    <li class="link"><a href="{% url 'signup' %}">Sign Up</a></li>
-                    {% endif %}
-                    <li class="link search">
-                        <span><i class="fa-solid fa-magnifying-glass"></i></span>
-                    </li>
-                </ul>
+  <header id="home">
+    <nav style="background-color:#121212">
+      <div class="nav__bar">
+        <div class="nav__logo"><a class="text-decoration-none" href="{% url 'home' %}">PuneCompass.</a></div>
+        <ul class="nav__links">
+          {% if request.user.is_authenticated and not request.user.is_staff %}
+          <li class="link"><a href="{% url 'userProfile' %}">Your Account</a></li>
+          {% endif %}
+          {% if  not request.user.is_staff %}
+          <li class="link"><a href="{% url 'touristPlaces' %}">Places to Visit</a></li>
+          <li class="link"><a href="{% url 'transport' %}">Transport</a></li>
+          <li class="link"><a href="{% url 'restaurants' %}">Restaurants</a></li>
+          <li class="link"><a href="{% url 'accommodations' %}">Accommodations</a></li>
+          {% endif %}
+          {% if not request.user.is_authenticated %}
+          <li class="link"><a href="{% url 'login' %}">Login</a></li>
+          <li class="link"><a href="{% url 'signup' %}">Sign Up</a></li>
+          {% else %}
+          <li class="link"><a href="{% url 'logout' %}">Logout</a></li>
+
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+  </header>
+  {% if messages %}
+  <div class="alert alert-info alert-dismissible fade show" role="alert">
+    {% for message in messages %}
+    {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    {% endfor %}
+
+  </div>
+
+  {% endif %}
+  {% block body %}
+
+  {% endblock %}
+
+  <!-- about section -->
+  <section class="afooter mt-5">
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="footer-about">
+              <div class="footer-logo">
+                <a href="#"><img src="/static/images/LogoP-wbg.png" alt=""></a>
+                <h6>PuneCompass</h6>
+              </div>
+              <p>Thank you for visiting!</p>
+              <i class="fa-brands fa-square-facebook"></i>
+              <i class="fa-brands fa-square-twitter"></i>
+              <i class="fa-brands fa-square-instagram"></i>
             </div>
-        </nav>
-    </header>
-    {% if messages %}
-    <div class="alert alert-info alert-dismissible fade show" role="alert">
-        {% for message in messages %}
-        {{ message }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        {% endfor %}
-
-    </div>
-
-    {% endif %}
-    {% block body %}
-
-    {% endblock %}
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="footer-widget">
+              <h6>Links</h6>
+              <ul>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Transport</a></li>
+                <li><a href="#">History</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="footer-widget">
+              <h6>Address</h6>
+              <a href="#">
+                <p>PES Modern College of Engineering, Pune</p>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="footer-widget">
+              <h6>A project by</h6>
+              <div class="footer-newsletter form-inline">
+                <p> <a class="text-secondary" target="_blank" href="https://www.linkedin.com/in/mihika-saraf-8b6557231/"> Mihika Saraf</a> <br> <a class="text-secondary" href="https://www.linkedin.com/in/avneesh-deshmukh">Avneesh Deshmukh</a>  <br>  <a class="text-secondary" target="_blank"  href="https://www.linkedin.com/in/kedar-c-044938283?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">Kedar Chikane</a> <br> <a class="text-secondary" target="_blank" href="https://www.linkedin.com/in/rutuja-chanakhekar/">Rutuja Chanakhekar</a> </p>
+               
+               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container copyright">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <div class="footer-copyright-text">
+              <p>Copyright &copy; 2024 All rights reserved</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </section>
 
 </body>

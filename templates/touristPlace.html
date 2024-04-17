@@ -1,0 +1,189 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+<section class="container-fluid restviews">
+    <div class="container top">
+        <div class="heading">
+            <h2>{{ place.name }}</h2>
+            {% for category in categories %}
+                <span>{{ category.name | capfirst }}&ensp;</span>
+            {% endfor %}
+            <hr>
+            <h3>{{ place.address }}</h3>
+        </div>
+    </div>
+    <!--carousel trial-->
+    <div id="carouselExampleIndicators" class="carousel slide">
+        <div class="carousel-indicators">
+            {% for image in images %}
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ forloop.counter0 }}"
+                {% if forloop.first %}class="active" {% endif %} aria-label="Slide {{ forloop.counter }}"></button>
+            {% endfor %}
+        </div>
+
+        <div class="carousel-inner">
+            {% for image in images %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                <img src="{{ image.image.url }}" class="d-block w-100" alt="Slide {{ forloop.counter }}">
+            </div>
+            {% endfor %}
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <!--carousel trial end-->
+    <hr>
+    <!--restaurant description-->
+    <section class="container-fluid restdes">
+        <h2>About</h2>
+        <p>{{ place.description }}</p>
+        
+    </section>
+    <!--description ends-->
+    
+    <!--description ends-->
+    <hr>
+    <section class="container-fluid restdes ">
+        <h2 class="mb-3">Location</h2>
+        <div class="d-flex justify-content-center">
+
+            <iframe src="{{ place.mapLocation }}"
+                width="1000" height="600" style="border:0;" allowfullscreen="true" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </section>
+    <hr>
+    <section class="container-fluid restdes">
+        <h2>Add a review</h2>
+        <div class="row">
+
+            <form action="{% url 'touristPlace' id=place.id %}" method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <p class="text-white mb-0">Rate {{ place.name }} out of 5</p>
+                </div>
+                <div class="d-flex justify-content-start align-items-center mb-3">
+                    <div class="form-check me-4">
+                        <input class="form-check-input " value="1" type="radio" name="rating" id="onestar">
+                        <label class="form-check-label" for="onestar">
+                            <i class="fa-solid fa-star" style="color: #ffd700;"></i>
+                        </label>
+                    </div>
+                    <div class="form-check me-4">
+                        <input class="form-check-input " value="2" type="radio" name="rating" id="twostar">
+                        <label class="form-check-label" for="twostar">
+                            <i class="fa-solid fa-star" style="color: #ffd700;"></i>
+                            <i class="fa-solid fa-star" style="color: #ffd700;"></i>
+                        </label> 
+                    </div>
+                    <div class="form-check me-4">
+                        <input class="form-check-input " value="3" type="radio" name="rating" id="threestar">
+                        <label class="form-check-label" for="threestar">
+                           <i class="fa-solid fa-star" style="color: #ffd700;"></i>
+                            <i class="fa-solid fa-star" style="color: #ffd700;"></i>
+                            <i class="fa-solid fa-star" style="color: #ffd700;"></i>
+                        </label>
+                    </div>
+                    <div class="form-check me-4">
+                        <input class="form-check-input " value="4" type="radio" name="rating" id="fourstar">
+                        <label class="form-check-label" for="fourstar">
+                            <i class="fa-solid fa-star" style="color: #ffd700;"></i>
+                            <i class="fa-solid fa-star" style="color: #ffd700;"></i>
+                            <i class="fa-solid fa-star" style="color: #ffd700;"></i>
+                            <i class="fa-solid fa-star" style="color: #ffd700;"></i>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input " value="5" type="radio" name="rating" id="fivestar">
+                        <label class="form-check-label" for="fivestar">
+                            <i class="fa-solid fa-star" style="color: #ffd700;"></i>
+                            <i class="fa-solid fa-star" style="color: #ffd700;"></i>
+                            <i class="fa-solid fa-star" style="color: #ffd700;"></i>
+                            <i class="fa-solid fa-star" style="color: #ffd700;"></i>
+                            <i class="fa-solid fa-star" style="color: #ffd700;"></i>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group mb-4">
+                    <textarea required placeholder="Write A Review" class="form-control bg-secondary-subtle"
+                        name="comment" id="comment" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Review</button>
+            </form>
+
+
+
+        </div>
+    </section>
+
+    <!--description ends-->
+    <hr>
+    <section class="container-fluid restdes">
+        <h4>Reviews</h4>
+        {% if reviews %}
+        {% for review in reviews %}
+        <div class="card my-3">
+            <div class="card-body">
+                <div class="d-flex align-items-center mb-2">
+                    {% if review.user.gender == 'male' %}
+
+                    <img src="{% static 'images/male.png' %}" class="rounded-circle me-2" width="40" height="40"
+                        alt="Profile Picture">
+                    {% elif review.user.gender == 'female' %}
+                    <img src="{% static 'images/female.png' %}" class="rounded-circle me-2" width="40" height="40"
+                        alt="Profile Picture">
+
+                    {% else %}
+                    <img src="{% static 'images/other.png' %}" class="rounded-circle me-2" width="40" height="40"
+                        alt="Profile Picture">
+
+                    {% endif %}
+                    <p class="card-title">{{ review.user.username }}</p>
+                </div>
+                <div class="stars">
+                    {% for star in review.stars %}
+                    <i class="fa-solid fa-star" style="color: #ffd700;"></i>
+                    {% endfor %}
+                </div>
+                <p class="card-text">{{ review.comment }}</p>
+                
+            </div>
+
+        </div>
+        {% endfor %}
+        {% if isLess %}
+        <div class="text-end me-5 pe-5">
+            <a href="/allReviews/TouristPlace+{{ place.id }}"><button class="btn btn-primary">View All</button></a>
+        </div>
+
+        {% endif %}
+
+        {% else %}
+            <p class="fs-italic">No reviews yet...</p>
+        {% endif %}
+
+    </section>
+    <br>
+    <div class="row">
+
+    </div>
+    <br>
+</section>
+<script src="/static/js/main.js"></script>
+
+
+{% endblock %}
+</body>
+
+</html>

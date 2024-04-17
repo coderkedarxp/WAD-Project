@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<div class="d-flex justify-content-center mt-5">
+    <h1>The travel gallery</h1>
+</div>
+<div class="line"></div>
+<p class="section__subheader">A gallery is a place to record new things you have discovered while exploring various
+    places you visit.</p>
+<section class="container-fluid restdes p-5">
+    <div class="section__container journals__container">
+
+        <div class="row">
+            {% for post in usersPosts %}
+            <div class="col-md-4 my-3">
+                <div class="card journals__card">
+                    <div class="card-header bg-transparent border-success">
+                        <h6>{{ post.user.username }}</h6>
+                    </div>
+                    <img src="/media/{{ post.image }}" class="card-img-top" alt="...">
+                    <hr>
+                    <div class="card-body">
+                        <p class="card-text">{{ post.caption }}</p>
+                        <a class="text-decoration-none " target="_blank"
+                            href="/{{ post.link }}/{{ post.location.id }}">
+                            <p class="card-title"><i class="fa-solid fa-location-dot"></i>&ensp;{{ post.location }}</p>
+                            </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+            {% for post in otherPosts %}
+            <div class="col-md-4 my-3">
+                <div class="card journals__card">
+                    <div class="card-header bg-transparent border-success">
+                        <h6>{{ post.user.username }}</h6>
+                    </div>
+                    <img src="/media/{{ post.image }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">{{ post.caption }}</p>
+                        <a class="text-decoration-none " target="_blank" href="/{{ post.link }}/{{ post.location.id }}">
+                            <p class="card-title"><i class="fa-solid fa-location-dot"></i>&ensp;{{ post.location }}</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- <div class="col-md-4 my-3">
+                <div class="card journals__card">
+                    <div class="card-header bg-transparent border-success">
+                        <h6>User Name</h6>
+                    </div>
+                    <img src="/static/images/traveljournal2.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Location Name</h5>
+                        <p class="card-text">Caption</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 my-3">
+                <div class="card journals__card">
+                    <div class="card-header bg-transparent border-success">
+                        <h6>User Name</h6>
+                    </div>
+                    <img src="/static/images/traveljournal3.jpg" class="card-img-top" alt="...">
+                    <div class="card-body" style="height: 150px;">
+                        <h5 class="card-title">Location Name</h5>
+                        <p class="card-text">Caption</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card journals__card">
+                    <div class="card-header bg-transparent border-success">
+                        <h6>User Name</h6>
+                    </div>
+                    <img src="/static/images/traveljournal3.jpg" class="card-img-top" alt="...">
+                    <div class="card-body" style="height: 150px;">
+                        <h5 class="card-title">Location Name</h5>
+                        <p class="card-text">Caption</p>
+                    </div>
+                </div>
+            </div> -->
+            <!-- Add more cards as needed -->
+        </div>
+
+
+
+
+</section>
+<a href="{% url 'addPost' %}" class="btn back-to-top ">
+    <i class="fa-solid fa-plus text-white"></i><span class="text-white">&nbsp; Add Post</span>
+</a>
+{% endblock %}

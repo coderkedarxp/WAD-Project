@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<div class="container d-flex justify-content-center mb-5 mt-2">
+    <div class="col-md-4">
+        <div class="card journals__card">
+            <div class="card-header bg-transparent border-success">
+                <div class="row">
+                    <div class="col">
+                        <h4>Your Profile</h4>
+                    </div>
+                    <div class="col-auto">
+                        <a href="{% url 'editProfile' %}">
+                            <i class="fa-solid fa-square-pen fs-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center py-4">
+                {% if user.gender == 'male' %}
+                <img style="width: 50%;" src="{% static 'images/male.png' %}" class="card-img-top" alt="...">
+                {% elif user.gender == 'female' %}
+                <img style="width: 50%;" src="{% static 'images/female.png' %}" class="card-img-top" alt="...">
+                {% else %}
+                <img style="width: 50%;" src="{% static 'images/other.png' %}" class="card-img-top" alt="...">
+                {% endif %}
+            </div>
+            <div class="d-flex justify-content-center ">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Username : {{ request.user.username }}</h5>
+                    <p class="card-text text-center">Name : {{ request.user.first_name }} {{ request.user.last_name }}
+                    </p>
+                    <p class="card-text text-center">Gender : {{ request.user.gender | capfirst }}</p>
+                    <p class="card-text text-center">Email : {{ request.user.email }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<hr>
+<section class="container-fluid restdes p-5">
+    <div class="d-flex justify-content-center mt-5">
+        <h1>Your Travel Gallery</h1>
+    </div>
+    <div class="line"></div>
+    <div class="section__container journals__container">
+        {% if posts %}
+        <div class="row">
+            {% if count == 1 %}
+            <div class="col-md-4 my-3">
+            </div>
+            {% endif %}
+            {% for post in posts %}
+            <div class="col-md-4 my-3">
+                <div class="card journals__card" id="userPostCard">
+                    <img src="/media/{{ post.image }}" class="card-img-top" alt="...">
+                    <hr>
+                    <div class="card-body">
+                        <p class="card-text">{{ post.caption }}</p>
+                        <a class="text-decoration-none " target="_blank" href="/{{ post.link }}/{{ post.location.id }}">
+                            <p class="card-title"><i class="fa-solid fa-location-dot"></i>&ensp;{{ post.location }}</p>
+                        </a>
+                    </div>
+                    <a class="mx-auto mb-2" href="{% url 'deletePost' post.id %}">
+                        <button id="deleteButton" class="btn">Delete</button>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <h4 class="text-secondary fst-italic text-center">You have no posts yet...</h4>
+        {% endif %}
+</section>
+
+<a href="{% url 'addPost' %}" class="btn back-to-top ">
+    <i class="fa-solid fa-plus text-white"></i><span class="text-white">&nbsp; Add Post</span>
+</a>
+
+
+<script>
+    let delete_button=document.getElementById('deleteButton')
+    delete_button.addEventListener('click', function (e) {
+        e.preventDefault();
+        let confirmation = confirm("Are you really sure? This will DELETE your post. This step is NOT REVERSIBLE");
+        if (confirmation) {
+            window.location.href = this.href;
+        }
+        else{
+            return false;
+        }
+    })
+</script>
+{% endblock %}

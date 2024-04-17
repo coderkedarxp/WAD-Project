@@ -14,10 +14,23 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+import yaml
 from django.contrib import admin
 from django.urls import path,include
+from django.conf import settings
+from django.conf.urls.static import static
+import os
+
+yaml_path = os.path.join(settings.BASE_DIR, 'key.yaml')
+with open(yaml_path, 'r') as file:
+    secrets = yaml.safe_load(file)
+
+secret_url=secrets['SECRET']
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path(f'{secret_url}/', include('adminApp.urls')),
     path('',include('TourApp.urls')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

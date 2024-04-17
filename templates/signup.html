@@ -24,33 +24,42 @@
           {{ form.as_p }}
           <p>
             <label for="firstname">First Name</label>
-            <input type="text" placeholder="First Name" name="first_name">
+            <input type="text" placeholder="First Name" name="first_name" required>
           </p>
           <p>
             <label for="lastname">Last Name</label>
-            <input type="text" placeholder="Last Name" name="last_name">
+            <input type="text" placeholder="Last Name" name="last_name" required>
           </p>
           <p>
             <label for="username">Username</label>
-            <input type="text" placeholder="Username" name="username">
+            <input type="text" placeholder="Username" name="username" required>
+          </p>
+          <p>
+            <label for="gender">Gender</label><br>
+            <select name="gender" id="gender" required>
+              <option value="">Select</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
           </p>
           <p>
             <label for="email">Email Address</label>
-            <input type="email" placeholder="name@example.com" name="email">
+            <input type="email" placeholder="name@example.com" name="email" required>
           </p>
           <p>
           <div class="d-flex">
-            <label for="password" >Password</label>
+            <label for="password">Password</label>
           </div>
-          <input type="password" placeholder="password" id="password" name="password"><i class="fa-solid fa-eye-slash" onclick="pass()"
-            id="pass-icon" style="cursor: pointer;"></i>
+          <input type="password" placeholder="Password" id="password" name="password"><i class="fa-solid fa-eye-slash"
+            onclick="pass()" id="pass-icon" style="cursor: pointer;"></i>
           </p>
           <p>
           <div class="d-flex">
             <label for="confirmpassword">Confirm Password</label>
           </div>
-          <input type="password" placeholder="Confirm Password" id="confirmpassword"  name="confirmpassword"><i class="fa-solid fa-eye-slash"
-            onclick="confirmpass()" id="confirmpass-icon" style="cursor: pointer;"></i>
+          <input type="password" placeholder="Confirm Password" id="confirmpassword" name="confirmpassword"><i
+            class="fa-solid fa-eye-slash" onclick="confirmpass()" id="confirmpass-icon" style="cursor: pointer;"></i>
           </p>
           <p>
             <button type="submit" class="btn-submit">Sign Up</button>
@@ -63,6 +72,15 @@
 </section>
 
 <script src="/static/js/main.js"></script>
+<script>
+  gender = document.getElementById('gender');
+  gender.addEventListener('change', function(event){
+    let gen=event.target;
+    if(gen.value == ''){
+      alert('Please select a gender');
+    }
+  })
+</script>
 
 {% endblock %}
 </body>
